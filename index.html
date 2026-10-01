@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutCurioso ⚽</title>
+    <!-- Ligação com o CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>⚽ FutCurioso</h1>
+        <p>Curiosidades, histórias e fatos incríveis do futebol</p>
+    </header>
+    <!-- MENU -->
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#curiosidades">Curiosidades</a>
+        <a href="#surpresa">Surpresa</a>
+    </nav>
+    <!-- INTRODUÇÃO -->
+    <section class="hero" id="inicio">
+        <h2>Você conhece <span>o futebol?</span> ⚽</h2>
+        <p>
+            Descubra fatos curiosos sobre jogadores, clubes,
+            Copas do Mundo e momentos históricos que marcaram
+            o futebol.
+        </p>
+    </section>
+    <!-- CURIOSIDADES -->
+    <main class="container" id="curiosidades">
+        <!-- FILTROS -->
+        <div class="categorias">
+            <button class="categoria ativa"
+                onclick="filtrar('todos', this)">
+                ⚽ Todos
+            </button>
+            <button class="categoria"
+                onclick="filtrar('jogadores', this)">
+                👤 Jogadores
+            </button>
+            <button class="categoria"
+                onclick="filtrar('copa', this)">
+                🏆 Copa do Mundo
+            </button>
+            <button class="categoria"
+                onclick="filtrar('clubes', this)">
+                🏟️ Clubes
+            </button>
+            <button class="categoria"
+                onclick="filtrar('historia', this)">
+                📜 História
+            </button>
+        </div>
+        <!-- CARDS -->
+        <div class="cards">
+            <div class="card jogadores">
+                <div class="emoji">🇧🇷</div>
+                <h3>Pelé e as Copas</h3>
+                <p>
+                    Pelé é o único jogador que conquistou
+                    três Copas do Mundo como jogador:
+                    1958, 1962 e 1970.
+                </p>
+            </div>
+            <div class="card copa">
+                <div class="emoji">🏆</div>
+                <h3>O Brasil nas Copas</h3>
+                <p>
+                    A Seleção Brasileira é a única seleção
+                    que participou de todas as edições
+                    da Copa do Mundo masculina.
+                </p>
+            </div>
+            <div class="card jogadores">
+                <div class="emoji">⚡</div>
+                <h3>Velocidade no futebol</h3>
+                <p>
+                    Jogadores profissionais podem atingir
+                    velocidades muito altas durante
+                    uma arrancada.
+                </p>
+            </div>
+            <div class="card clubes">
+                <div class="emoji">🏟️</div>
+                <h3>Estádio de Wembley</h3>
+                <p>
+                    O Wembley é um dos estádios mais conhecidos
+                    do futebol mundial e fica localizado
+                    em Londres, na Inglaterra.
+                </p>
+            </div>
+            <div class="card historia">
+                <div class="emoji">📜</div>
+                <h3>As primeiras regras</h3>
+                <p>
+                    As regras modernas do futebol começaram
+                    a ser organizadas na Inglaterra
+                    durante o século XIX.
+                </p>
+            </div>
+            <div class="card copa">
+                <div class="emoji">🌎</div>
+                <h3>Primeira Copa do Mundo</h3>
+                <p>
+                    A primeira Copa do Mundo aconteceu
+                    em 1930, no Uruguai.
+                </p>
+            </div>
+            <div class="card jogadores">
+                <div class="emoji">🧤</div>
+                <h3>O goleiro é diferente</h3>
+                <p>
+                    Dentro da própria área, o goleiro é
+                    o único jogador que pode tocar a bola
+                    com as mãos durante o jogo.
+                </p>
+            </div>
+            <div class="card clubes">
+                <div class="emoji">🔥</div>
+                <h3>Grandes clássicos</h3>
+                <p>
+                    Rivalidades entre grandes clubes fazem
+                    parte da história do futebol e atraem
+                    milhões de torcedores.
+                </p>
+            </div>
+        </div>
+    </main>
+    <!-- CURIOSIDADE SURPRESA -->
+    <section class="surpresa" id="surpresa">
+        <h2>🎲 Curiosidade aleatória</h2>
+        <button class="botao" onclick="sortear()">
+            Descobrir curiosidade
+        </button>
+        <div id="resultado"></div>
+    </section>
+    <!-- RODAPÉ -->
+    <footer>
+        <p>⚽ FutCurioso © 2026</p>
+        <p>
+            Um site feito para quem ama futebol.
+        </p>
+    </footer>
+    <!-- JAVASCRIPT -->
+    <script>
+        function filtrar(categoria, botao) {
+            const cards = document.querySelectorAll(".card");
+            const botoes =
+                document.querySelectorAll(".categoria");
+            botoes.forEach(function (b) {
+                b.classList.remove("ativa");
+            });
+            botao.classList.add("ativa");
+            cards.forEach(function (card) {
+                if (categoria === "todos") {
+                    card.style.display = "block";
+                } else if (card.classList.contains(categoria)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+        const curiosidades = [
+            "🇧🇷 O Brasil é a única seleção que disputou todas as Copas do Mundo masculinas.",
+            "🏆 Pelé conquistou três Copas do Mundo com o Brasil.",
+            "⚽ A primeira Copa do Mundo foi disputada em 1930.",
+            "🇺🇾 O Uruguai foi o primeiro campeão mundial de futebol.",
+            "🧤 O goleiro pode usar as mãos dentro da própria área.",
+            "📜 As regras modernas do futebol foram organizadas na Inglaterra.",
+            "🌎 A Copa do Mundo reúne seleções de diferentes continentes.",
+            "👟 Jogadores profissionais percorrem vários quilômetros durante uma partida."
+        ];
+        function sortear() {
+            const resultado =
+                document.getElementById("resultado");
+            const numero =
+                Math.floor(
+                    Math.random() * curiosidades.length
+                );
+            resultado.innerHTML =
+                curiosidades[numero];
+            resultado.style.display = "block";
+        }
+    </script>
+</body>
+</html>
